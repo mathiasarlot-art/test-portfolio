@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mathias Arlot — Designer & Développeur</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: '#295FEC',
+            ink:    '#1E1E1E',
+            paper:  '#F8F9FB',
+          },
+          fontFamily: {
+            heading: ['"Cormorant Garamond"', 'serif'],
+            ui:      ['Syne', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      font-family: 'Syne', sans-serif;
+      background: #F8F9FB;
+      color: #1E1E1E;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .fade-up  { opacity: 0; animation: fadeUp  0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
+    .fade-in  { opacity: 0; animation: fadeIn  0.6s ease forwards; }
+
+    .d-1  { animation-delay: 0.05s; }
+    .d-2  { animation-delay: 0.18s; }
+    .d-3  { animation-delay: 0.30s; }
+    .d-4  { animation-delay: 0.42s; }
+    .d-5  { animation-delay: 0.54s; }
+    .d-6  { animation-delay: 0.62s; }
+    .d-7  { animation-delay: 0.70s; }
+    .d-8  { animation-delay: 0.78s; }
+    .d-9  { animation-delay: 0.86s; }
+    .d-10 { animation-delay: 0.94s; }
+
+    /* ── Hero name ── */
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(48px, 9vw, 72px);
+      font-weight: 300;
+      letter-spacing: -0.025em;
+      line-height: 1;
+      color: #1E1E1E;
+    }
+
+    /* ── Label style ── */
+    .label {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ── Project cards ── */
+    .project-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(30,30,30,0.06);
+      transition:
+        transform 0.35s cubic-bezier(0.16,1,0.3,1),
+        box-shadow 0.35s cubic-bezier(0.16,1,0.3,1);
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow:
+        0 20px 60px rgba(41,95,236,0.09),
+        0 4px 16px rgba(30,30,30,0.07);
+    }
+    .project-card:hover .card-arrow {
+      transform: translate(3px, -3px);
+    }
+    .card-arrow {
+      transition: transform 0.25s ease;
+    }
+
+    /* ── Footer links ── */
+    .footer-link {
+      position: relative;
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(30,30,30,0.55);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .footer-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #295FEC;
+      transition: width 0.3s ease;
+    }
+    .footer-link:hover { color: #295FEC; }
+    .footer-link:hover::after { width: 100%; }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      padding: 18px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(248,249,251,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(30,30,30,0.05);
+    }
+    @media (max-width: 640px) {
+      nav { padding: 16px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav class="fade-in d-1">
+    <span class="label" style="color:rgba(30,30,30,0.3); letter-spacing:0.14em;">MA</span>
+    <span class="label" style="color:rgba(30,30,30,0.25);">2026</span>
+  </nav>
+
+  <!-- ══════════════════════════════
+       HERO
+  ══════════════════════════════ -->
+  <section style="min-height:100svh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:100px 24px 64px;">
+
+    <!-- Overline label -->
+    <div class="fade-up d-1 label" style="color:#295FEC; margin-bottom:28px; letter-spacing:0.16em;">
+      Design &amp; Code
+    </div>
+
+    <!-- Name -->
+    <h1 class="hero-name fade-up d-2">Mathias Arlot</h1>
+
+    <!-- Title with flanking lines -->
+    <div class="fade-up d-3" style="display:flex; align-items:center; gap:14px; margin-top:18px;">
+      <div style="height:1px; width:32px; background:#295FEC;"></div>
+      <span class="label" style="color:#295FEC; letter-spacing:0.18em;">Designer &amp; Développeur</span>
+      <div style="height:1px; width:32px; background:#295FEC;"></div>
+    </div>
+
+    <!-- Accroche -->
+    <p class="fade-up d-4" style="margin-top:22px; color:rgba(30,30,30,0.45); font-size:14px; line-height:1.75; max-width:280px; font-weight:400;">
+      Je conçois des interfaces qui pensent,<br />et du code qui respire.
+    </p>
+
+    <!-- Scroll indicator -->
+    <div class="fade-up d-5" style="margin-top:64px; display:flex; flex-direction:column; align-items:center; gap:8px;">
+      <div style="width:1px; height:48px; background:rgba(30,30,30,0.12);"></div>
+      <span class="label" style="color:rgba(30,30,30,0.2); font-size:9px; letter-spacing:0.15em;">Scroll</span>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════
+       PROJECTS
+  ══════════════════════════════ -->
+  <section style="padding:0 24px 96px; max-width:960px; margin:0 auto;">
+
+    <!-- Section header -->
+    <div class="fade-up d-4" style="display:flex; align-items:baseline; gap:16px; margin-bottom:48px;">
+      <span class="label" style="color:rgba(30,30,30,0.28);">Projets sélectionnés</span>
+      <div style="flex:1; height:1px; background:rgba(30,30,30,0.08);"></div>
+      <span class="label" style="color:rgba(30,30,30,0.18);">06</span>
+    </div>
+
+    <!-- Grid -->
+    <div style="display:grid; grid-template-columns:1fr; gap:20px;">
+
+      <!-- Card 1 -->
+      <div class="project-card fade-up d-5" style="grid-column:span 1;">
+        <div style="height:176px; background:#295FEC; position:relative; overflow:hidden;">
+          <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:.18;" viewBox="0 0 480 176" fill="none" preserveAspectRatio="xMidYMid slice">
+            <circle cx="380" cy="88" r="130" stroke="white" stroke-width="1.5"/>
+            <circle cx="380" cy="88" r="80"  stroke="white" stroke-width="1"/>
+            <circle cx="380" cy="88" r="40"  stroke="white" stroke-width="0.75"/>
+            <line x1="0" y1="88" x2="480" y2="88" stroke="white" stroke-width="0.5"/>
+            <line x1="380" y1="0" x2="380" y2="176" stroke="white" stroke-width="0.5"/>
+          </svg>
+          <span class="label" style="position:absolute;top:18px;left:20px;color:rgba(255,255,255,0.5);font-size:10px;">01</span>
+        </div>
+        <div style="padding:24px 24px 28px; display:flex; justify-content:space-between; align-items:flex-start;">
+          <div>
+            <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; margin:0 0 8px; line-height:1.1;">Système de Design</h3>
+            <p style="font-size:13px; color:rgba(30,30,30,0.45); line-height:1.65; margin:0; max-width:320px;">Conception d'un design system cohérent pour une suite d'applications B2B SaaS.</p>
+          </div>
+          <span class="card-arrow label" style="color:#295FEC; font-size:18px; font-weight:300; flex-shrink:0; margin-left:16px;">↗</span>
+        </div>
+      </div>
+
+      <!-- Cards 2–3 side by side on md+ -->
+      <div style="display:grid; grid-template-columns:1fr; gap:20px;" id="row-2">
+
+        <!-- Card 2 -->
+        <div class="project-card fade-up d-6">
+          <div style="height:160px; background:#1A1A2E; position:relative; overflow:hidden;">
+            <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:.25;" viewBox="0 0 480 160" fill="none" preserveAspectRatio="xMidYMid slice">
+              <rect x="120" y="16" width="240" height="128" rx="14" stroke="white" stroke-width="1.5" fill="none"/>
+              <rect x="148" y="40"  width="184" height="80"  rx="7"  stroke="white" stroke-width="0.75" fill="none"/>
+              <circle cx="240" cy="148" r="6" fill="white"/>
+            </svg>
+            <span class="label" style="position:absolute;top:18px;left:20px;color:rgba(255,255,255,0.45);font-size:10px;">02</span>
+          </div>
+          <div style="padding:22px 24px 26px; display:flex; justify-content:space-between; align-items:flex-start;">
+            <div>
+              <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; margin:0 0 8px; line-height:1.1;">Application Mobile</h3>
+              <p style="font-size:13px; color:rgba(30,30,30,0.45); line-height:1.65; margin:0;">Interface iOS pour une app de bien-être, de l'UX au prototype interactif.</p>
+            </div>
+            <span class="card-arrow label" style="color:#295FEC; font-size:18px; font-weight:300; flex-shrink:0; margin-left:16px;">↗</span>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="project-card fade-up d-7">
+          <div style="height:160px; background:#C25A34; position:relative; overflow:hidden;">
+            <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:.2;" viewBox="0 0 480 160" fill="none" preserveAspectRatio="xMidYMid slice">
+              <rect x="24"  y="100" width="48" height="52" rx="3" fill="white"/>
+              <rect x="96"  y="70"  width="48" height="82" rx="3" fill="white"/>
+              <rect x="168" y="40"  width="48" height="112" rx="3" fill="white"/>
+              <rect x="240" y="60"  width="48" height="92"  rx="3" fill="white"/>
+              <rect x="312" y="30"  width="48" height="122" rx="3" fill="white"/>
+              <rect x="384" y="80"  width="48" height="72"  rx="3" fill="white"/>
+            </svg>
+            <span class="label" style="position:absolute;top:18px;left:20px;color:rgba(255,255,255,0.45);font-size:10px;">03</span>
+          </div>
+          <div style="padding:22px 24px 26px; display:flex; justify-content:space-between; align-items:flex-start;">
+            <div>
+              <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; margin:0 0 8px; line-height:1.1;">Dashboard Analytics</h3>
+              <p style="font-size:13px; color:rgba(30,30,30,0.45); line-height:1.65; margin:0;">Visualisation de données en temps réel pour une plateforme SaaS à forte volumétrie.</p>
+            </div>
+            <span class="card-arrow label" style="color:#295FEC; font-size:18px; font-weight:300; flex-shrink:0; margin-left:16px;">↗</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Cards 4–5 side by side on md+ -->
+      <div style="display:grid; grid-template-columns:1fr; gap:20px;" id="row-3">
+
+        <!-- Card 4 -->
+        <div class="project-card fade-up d-8">
+          <div style="height:160px; background:#2D6A58; position:relative; overflow:hidden;">
+            <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:.22;" viewBox="0 0 480 160" fill="none" preserveAspectRatio="xMidYMid slice">
+              <line x1="40" y1="44"  x2="420" y2="44"  stroke="white" stroke-width="10" stroke-linecap="round"/>
+              <line x1="40" y1="76"  x2="330" y2="76"  stroke="white" stroke-width="5"  stroke-linecap="round"/>
+              <line x1="40" y1="100" x2="360" y2="100" stroke="white" stroke-width="5"  stroke-linecap="round"/>
+              <line x1="40" y1="124" x2="280" y2="124" stroke="white" stroke-width="5"  stroke-linecap="round"/>
+              <line x1="40" y1="148" x2="220" y2="148" stroke="white" stroke-width="5"  stroke-linecap="round"/>
+            </svg>
+            <span class="label" style="position:absolute;top:18px;left:20px;color:rgba(255,255,255,0.45);font-size:10px;">04</span>
+          </div>
+          <div style="padding:22px 24px 26px; display:flex; justify-content:space-between; align-items:flex-start;">
+            <div>
+              <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; margin:0 0 8px; line-height:1.1;">Site Éditorial</h3>
+              <p style="font-size:13px; color:rgba(30,30,30,0.45); line-height:1.65; margin:0;">Refonte d'un magazine en ligne avec focus sur la typographie et l'expérience de lecture.</p>
+            </div>
+            <span class="card-arrow label" style="color:#295FEC; font-size:18px; font-weight:300; flex-shrink:0; margin-left:16px;">↗</span>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="project-card fade-up d-9">
+          <div style="height:160px; background:#D08A18; position:relative; overflow:hidden;">
+            <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:.22;" viewBox="0 0 480 160" fill="none" preserveAspectRatio="xMidYMid slice">
+              <circle cx="240" cy="80" r="56" stroke="white" stroke-width="1.5" stroke-dasharray="6 8"/>
+              <circle cx="240" cy="80" r="28" fill="white"/>
+              <line x1="240" y1="80" x2="310" y2="30"  stroke="white" stroke-width="1.5"/>
+              <line x1="240" y1="80" x2="370" y2="95"  stroke="white" stroke-width="1.5"/>
+              <line x1="240" y1="80" x2="160" y2="145" stroke="white" stroke-width="1.5"/>
+              <line x1="240" y1="80" x2="120" y2="48"  stroke="white" stroke-width="1.5"/>
+            </svg>
+            <span class="label" style="position:absolute;top:18px;left:20px;color:rgba(255,255,255,0.45);font-size:10px;">05</span>
+          </div>
+          <div style="padding:22px 24px 26px; display:flex; justify-content:space-between; align-items:flex-start;">
+            <div>
+              <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; margin:0 0 8px; line-height:1.1;">Motion Design</h3>
+              <p style="font-size:13px; color:rgba(30,30,30,0.45); line-height:1.65; margin:0;">Micro-interactions et transitions pour la landing page d'un produit tech grand public.</p>
+            </div>
+            <span class="card-arrow label" style="color:#295FEC; font-size:18px; font-weight:300; flex-shrink:0; margin-left:16px;">↗</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Card 6 -->
+      <div class="project-card fade-up d-10">
+        <div style="height:176px; background:#4B2E83; position:relative; overflow:hidden;">
+          <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:.2;" viewBox="0 0 480 176" fill="none" preserveAspectRatio="xMidYMid slice">
+            <polygon points="240,16 424,160 56,160" stroke="white" stroke-width="1.5" fill="none"/>
+            <polygon points="240,46 394,160 86,160"  stroke="white" stroke-width="1"   fill="none"/>
+            <polygon points="240,76 364,160 116,160" stroke="white" stroke-width="0.75" fill="none"/>
+            <polygon points="240,106 334,160 146,160" stroke="white" stroke-width="0.5" fill="none"/>
+            <circle cx="240" cy="88" r="5" fill="white"/>
+          </svg>
+          <span class="label" style="position:absolute;top:18px;left:20px;color:rgba(255,255,255,0.45);font-size:10px;">06</span>
+        </div>
+        <div style="padding:24px 24px 28px; display:flex; justify-content:space-between; align-items:flex-start;">
+          <div>
+            <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; margin:0 0 8px; line-height:1.1;">Identité de Marque</h3>
+            <p style="font-size:13px; color:rgba(30,30,30,0.45); line-height:1.65; margin:0; max-width:320px;">Identité visuelle complète pour une startup dans le secteur légal et la conformité réglementaire.</p>
+          </div>
+          <span class="card-arrow label" style="color:#295FEC; font-size:18px; font-weight:300; flex-shrink:0; margin-left:16px;">↗</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       FOOTER
+  ══════════════════════════════ -->
+  <footer class="fade-in d-5" style="border-top:1px solid rgba(30,30,30,0.08); padding:32px 24px 40px;">
+    <div style="max-width:960px; margin:0 auto; display:flex; flex-direction:column; align-items:center; gap:20px;">
+
+      <div style="display:flex; align-items:center; gap:32px;">
+        <a href="https://linkedin.com/in/mathiasarlot" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a>
+        <div style="width:4px; height:4px; border-radius:50%; background:rgba(30,30,30,0.2);"></div>
+        <a href="mailto:hello@mathiasarlot.dev" class="footer-link">hello@mathiasarlot.dev</a>
+      </div>
+
+      <p class="label" style="color:rgba(30,30,30,0.22); font-size:10px; letter-spacing:0.12em; margin:0;">
+        © 2026 Mathias Arlot
+      </p>
+
+    </div>
+  </footer>
+
+  <!-- ── Responsive: 2-column grid on md+ ── -->
+  <script>
+    function applyLayout() {
+      const isMd = window.innerWidth >= 768;
+      const row2 = document.getElementById('row-2');
+      const row3 = document.getElementById('row-3');
+      if (isMd) {
+        row2.style.gridTemplateColumns = '1fr 1fr';
+        row3.style.gridTemplateColumns = '1fr 1fr';
+      } else {
+        row2.style.gridTemplateColumns = '1fr';
+        row3.style.gridTemplateColumns = '1fr';
+      }
+    }
+    applyLayout();
+    window.addEventListener('resize', applyLayout);
+  </script>
+
+</body>
+</html>
